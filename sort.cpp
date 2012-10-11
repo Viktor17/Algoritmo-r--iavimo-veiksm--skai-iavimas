@@ -9,21 +9,63 @@ using namespace std;
 int main(int argc, char *argv[])
 {
     int i, N = 1000;
-    int ly = 1;
-    int su = 1;
-    int *a = new int[N];
+    int ly = 0;
+    int su = 0;
+    int *a = new int[N];  // random
+    int *b = new int[N];  // nuo 1 iki 1000
       for (i = 0; i < N; i++)
-        a[i] = 1000*(1.0*rand()/RAND_MAX);
-
-    cout << "Įvestas skaičių masyvas yra:" << endl;
-    for (i = 0; i < N; i++) cout << a[i] << " ";
+        {a[i] = 1000*(1.0*rand()/RAND_MAX);
+        b[i] = i;}
+  //  cout << "Įvestas skaičių masyvas yra:" << endl;
+  //  for (i = 0; i < N; i++) cout << a[i] << " ";
     cout << endl;
+    selection(a, 0, N-1, ly, su);
+      cout << "RANDOM selection palyginimu :" << ly << endl;
+      cout << "RANDOM selection sukeitimu :" << su << endl;
+        for (i = 0; i < N; i++)
+        {a[i] = 1000*(1.0*rand()/RAND_MAX);
+        b[i] = i;}
+        ly = 0; su = 0;
+    selection(b, 0, N-1, ly, su);
+      cout << "Nuo 1 iki 1000 selection palyginimu :" << ly << endl;
+      cout << "Nuo 1 iki 1000 selection sukeitimu :" << su << endl;
+            for (i = 0; i < N; i++)
+        {a[i] = 1000*(1.0*rand()/RAND_MAX);
+        b[i] = i;}
+                ly = 0; su = 0;
+    insertion(a, 0, N-1, ly, su);
+      cout << "RANDOM insertion palyginimu :" << ly << endl;
+      cout << "RANDOM insertion sukeitimu :" << su << endl;
+            for (i = 0; i < N; i++)
+        {a[i] = 1000*(1.0*rand()/RAND_MAX);
+        b[i] = i;}
+                ly = 0; su = 0;
+    insertion(b, 0, N-1, ly, su);
+      cout << "Nuo 1 iki 1000 insertion palyginimu :" << ly << endl;
+      cout << "Nuo 1 iki 1000 insertion sukeitimu :" << su << endl;
+            for (i = 0; i < N; i++)
+        {a[i] = 1000*(1.0*rand()/RAND_MAX);
+        b[i] = i;}
+                ly = 0; su = 0;
     bubble(a, 0, N-1, ly, su);
+      cout << "RANDOM bubble palyginimu :" << ly << endl;
+      cout << "RANDOM bubble sukeitimu :" << su << endl;
+            for (i = 0; i < N; i++)
+        {a[i] = 1000*(1.0*rand()/RAND_MAX);
+        b[i] = i;}
+                ly = 0; su = 0;
+    bubble(b, 0, N-1, ly, su);
+      cout << "Nuo 1 iki 1000 bubble palyginimu :" << ly << endl;
+      cout << "Nuo 1 iki 1000 bubble sukeitimu :" << su << endl;
+            for (i = 0; i < N; i++)
+        {a[i] = 1000*(1.0*rand()/RAND_MAX);
+        b[i] = i;}
+
     cout << "Surūšiuotas skaičių masyvas yra:" << endl;
-    for (i = 0; i < N; i++) cout << a[i] << " ";
+  //  for (i = 0; i < N; i++) cout << a[i] << " ";
     cout << endl;
-    cout << "palyginimu :" << ly << endl; // RANDOM : selection - 5269; insertion - 1000; bubble - 499501
-    cout << "sukeitimu :" << su << endl; // RANDOM : selection - 1000; insertion - 992; bubble - 247927
+    cout << "palyginimu :" << ly << endl;
+    cout << "sukeitimu :" << su << endl;
 }
 // Sukeičia elementus vietomis
 template <class T>
