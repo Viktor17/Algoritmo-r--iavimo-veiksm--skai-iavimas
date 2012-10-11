@@ -5,10 +5,11 @@ template <class T> void compexch(T &A, T &B, int & su);
 template <class T> void selection(T a[], int l, int r, int & ly, int & su);
 template <class T> void insertion(T a[], int l, int r, int & ly, int & su);
 template <class T> void bubble(T a[], int l, int r, int & ly, int & su);
+void quickSort(int arr[], int left, int right);
 using namespace std;
 int main(int argc, char *argv[])
 {
-    int i, N = 1001;
+    int i, N = 1000;
     int ly = 0;
     int su = 0;
     int *a = new int[N];  // random
@@ -117,7 +118,10 @@ void selection(T a[], int l, int r, int & ly, int & su)
   { for (int i = l; i < r; i++)
       { int min = i;
         for (int j = i+1; j <= r; j++)
-            if (a[j] < a[min]) {min = j; ly++;}
+        {
+                      if (a[j] < a[min]) {min = j; } ly++;
+        }
+
         exch(a[i], a[min]); su++;
       }
   }
@@ -129,7 +133,7 @@ void insertion(T a[], int l, int r, int & ly, int & su)
     for (i = l+2; i <= r; i++)
       { int j = i; T v = a[i];
         while (v < a[j-1])
-          { a[j] = a[j-1]; j--; }
+          { a[j] = a[j-1]; j--; ly++; }
         a[j] = v;
       }
   }
@@ -140,4 +144,32 @@ void bubble(T a[], int l, int r, int & ly, int & su)
       for (int j = r; j > i; j--)
         {compexch(a[j-1], a[j], su); ly++;}
   }
+void quickSort(int arr[], int left, int right) {
+      int i = left, j = right;
+      int tmp;
+      int pivot = arr[(left + right) / 2];
+
+      /* partition */
+      while (i <= j) {
+            while (arr[i] < pivot)
+                  i++;
+            while (arr[j] > pivot)
+                  j--;
+            if (i <= j) {
+                  tmp = arr[i];
+                  arr[i] = arr[j];
+                  arr[j] = tmp;
+                  i++;
+                  j--;
+            }
+      };
+
+      /* recursion */
+      if (left < j)
+           {
+               quickSort(arr, left, j);
+           }
+      if (i < right) { quickSort(arr, i, right);
+}
+}
 
