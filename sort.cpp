@@ -8,64 +8,95 @@ template <class T> void bubble(T a[], int l, int r, int & ly, int & su);
 using namespace std;
 int main(int argc, char *argv[])
 {
-    int i, N = 1000;
+    int i, N = 1001;
     int ly = 0;
     int su = 0;
     int *a = new int[N];  // random
     int *b = new int[N];  // nuo 1 iki 1000
+    int *c = new int[N];  // nuo 1000 iki 1
       for (i = 0; i < N; i++)
         {a[i] = 1000*(1.0*rand()/RAND_MAX);
-        b[i] = i;}
+        b[i] = i;
+        c[i] = 1000-i;}
   //  cout << "Įvestas skaičių masyvas yra:" << endl;
   //  for (i = 0; i < N; i++) cout << a[i] << " ";
     cout << endl;
     selection(a, 0, N-1, ly, su);
       cout << "RANDOM selection palyginimu :" << ly << endl;
       cout << "RANDOM selection sukeitimu :" << su << endl;
-        for (i = 0; i < N; i++)
+      for (i = 0; i < N; i++)
         {a[i] = 1000*(1.0*rand()/RAND_MAX);
-        b[i] = i;}
+        b[i] = i;
+        c[i] = 1000-i;}
         ly = 0; su = 0;
     selection(b, 0, N-1, ly, su);
       cout << "Nuo 1 iki 1000 selection palyginimu :" << ly << endl;
       cout << "Nuo 1 iki 1000 selection sukeitimu :" << su << endl;
-            for (i = 0; i < N; i++)
+      for (i = 0; i < N; i++)
         {a[i] = 1000*(1.0*rand()/RAND_MAX);
-        b[i] = i;}
+        b[i] = i;
+        c[i] = 1000-i;}
+                ly = 0; su = 0;
+    selection(c, 0, N-1, ly, su);
+      cout << "Nuo 1000 iki 1 selection palyginimu :" << ly << endl;
+      cout << "Nuo 1000 iki 1 selection sukeitimu :" << su << endl;
+      for (i = 0; i < N; i++)
+        {a[i] = 1000*(1.0*rand()/RAND_MAX);
+        b[i] = i;
+        c[i] = 1000-i;}
                 ly = 0; su = 0;
     insertion(a, 0, N-1, ly, su);
       cout << "RANDOM insertion palyginimu :" << ly << endl;
       cout << "RANDOM insertion sukeitimu :" << su << endl;
-            for (i = 0; i < N; i++)
+      for (i = 0; i < N; i++)
         {a[i] = 1000*(1.0*rand()/RAND_MAX);
-        b[i] = i;}
+        b[i] = i;
+        c[i] = 1000-i;}
                 ly = 0; su = 0;
     insertion(b, 0, N-1, ly, su);
       cout << "Nuo 1 iki 1000 insertion palyginimu :" << ly << endl;
       cout << "Nuo 1 iki 1000 insertion sukeitimu :" << su << endl;
-            for (i = 0; i < N; i++)
+      for (i = 0; i < N; i++)
         {a[i] = 1000*(1.0*rand()/RAND_MAX);
-        b[i] = i;}
+        b[i] = i;
+        c[i] = 1000-i;}
+                ly = 0; su = 0;
+    insertion(c, 0, N-1, ly, su);
+      cout << "Nuo 1000 iki 1 insertion palyginimu :" << ly << endl;
+      cout << "Nuo 1000 iki 1 insertion sukeitimu :" << su << endl;
+      for (i = 0; i < N; i++)
+        {a[i] = 1000*(1.0*rand()/RAND_MAX);
+        b[i] = i;
+        c[i] = 1000-i;}
                 ly = 0; su = 0;
     bubble(a, 0, N-1, ly, su);
       cout << "RANDOM bubble palyginimu :" << ly << endl;
       cout << "RANDOM bubble sukeitimu :" << su << endl;
-            for (i = 0; i < N; i++)
+      for (i = 0; i < N; i++)
         {a[i] = 1000*(1.0*rand()/RAND_MAX);
-        b[i] = i;}
+        b[i] = i;
+        c[i] = 1000-i;}
                 ly = 0; su = 0;
     bubble(b, 0, N-1, ly, su);
       cout << "Nuo 1 iki 1000 bubble palyginimu :" << ly << endl;
       cout << "Nuo 1 iki 1000 bubble sukeitimu :" << su << endl;
-            for (i = 0; i < N; i++)
+      for (i = 0; i < N; i++)
         {a[i] = 1000*(1.0*rand()/RAND_MAX);
-        b[i] = i;}
+        b[i] = i;
+        c[i] = 1000-i;}
+                ly = 0; su = 0;
+    bubble(c, 0, N-1, ly, su);
+      cout << "Nuo 1000 iki 1 bubble palyginimu :" << ly << endl;
+      cout << "Nuo 1000 iki 1 bubble sukeitimu :" << su << endl;
+      for (i = 0; i < N; i++)
+        {a[i] = 1000*(1.0*rand()/RAND_MAX);
+        b[i] = i;
+        c[i] = 1000-i;}
 
-    cout << "Surūšiuotas skaičių masyvas yra:" << endl;
+   // cout << "Surūšiuotas skaičių masyvas yra:" << endl;
   //  for (i = 0; i < N; i++) cout << a[i] << " ";
     cout << endl;
-    cout << "palyginimu :" << ly << endl;
-    cout << "sukeitimu :" << su << endl;
+
 }
 // Sukeičia elementus vietomis
 template <class T>
