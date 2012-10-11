@@ -1,27 +1,29 @@
 #include <iostream>
 #include <stdlib.h>
 template <class T> void exch(T &, T &);
-template <class T> void compexch(T &, T &);
-template <class T> void selection(T *, int, int);
-template <class T> void insertion(T *, int, int);
-template <class T> void bubble(T *, int, int);
+template <class T> void compexch(T &A, T &B, int & su);
+template <class T> void selection(T a[], int l, int r, int & ly, int & su);
+template <class T> void insertion(T a[], int l, int r, int & ly, int & su);
+template <class T> void bubble(T a[], int l, int r, int & ly, int & su);
 using namespace std;
 int main(int argc, char *argv[])
 {
-    int i, N = atoi(argv[1]), KaDaryt = atoi(argv[2]);
+    int i, N = 1000;
+    int ly = 1;
+    int su = 1;
     int *a = new int[N];
-    if (KaDaryt) // Atsitiktinai sugeneruoja N skaičių intervale: 1,...,1000.
       for (i = 0; i < N; i++)
         a[i] = 1000*(1.0*rand()/RAND_MAX);
-    else // Savo nuožiūra įvedame skaičius. Norėdami baigti įvedimą, įvedame bet kokį simbolį - ne skaičių.
-      { N = 0; while (cin >> a[N]) N++; }
+
     cout << "Įvestas skaičių masyvas yra:" << endl;
     for (i = 0; i < N; i++) cout << a[i] << " ";
     cout << endl;
-    selection(a, 0, N-1);
+    bubble(a, 0, N-1, ly, su);
     cout << "Surūšiuotas skaičių masyvas yra:" << endl;
     for (i = 0; i < N; i++) cout << a[i] << " ";
     cout << endl;
+    cout << "palyginimu :" << ly << endl; // RANDOM : selection - 5269; insertion - 1000; bubble - 499501
+    cout << "sukeitimu :" << su << endl; // RANDOM : selection - 1000; insertion - 992; bubble - 247927
 }
 // Sukeičia elementus vietomis
 template <class T>
@@ -29,23 +31,28 @@ template <class T>
     { T t = A ; A = B; B = t; }
 // Sukeičia elementus vietomis tik jei patenkinta sąlyga
 template <class T>
-  void compexch(T &A, T &B)
-    { if (B < A) exch(A, B); }
+  void compexch(T &A, T &B, int & su)
+    {
+        if (B < A)
+        {
+            exch(A, B); su++;
+            }
+    }
 // Išrinkimo algoritmo realizacija
 template <class T>
-void selection(T a[], int l, int r)
+void selection(T a[], int l, int r, int & ly, int & su)
   { for (int i = l; i < r; i++)
       { int min = i;
         for (int j = i+1; j <= r; j++)
-            if (a[j] < a[min]) min = j;
-        exch(a[i], a[min]);
+            if (a[j] < a[min]) {min = j; ly++;}
+        exch(a[i], a[min]); su++;
       }
   }
 // Įterpimo algoritmo realizacija
 template <class T>
-void insertion(T a[], int l, int r)
+void insertion(T a[], int l, int r, int & ly, int & su)
   { int i;
-    for (i = r; i > l; i--) compexch(a[i-1], a[i]);
+    for (i = r; i > l; i--) {compexch(a[i-1], a[i], su); ly++;}
     for (i = l+2; i <= r; i++)
       { int j = i; T v = a[i];
         while (v < a[j-1])
@@ -55,9 +62,9 @@ void insertion(T a[], int l, int r)
   }
 // Burbulo algoritmas
 template <class T>
-void bubble(T a[], int l, int r)
+void bubble(T a[], int l, int r, int & ly, int & su)
   { for (int i = l; i < r; i++)
       for (int j = r; j > i; j--)
-        compexch(a[j-1], a[j]);
+        {compexch(a[j-1], a[j], su); ly++;}
   }
 
